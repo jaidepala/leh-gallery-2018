@@ -1,0 +1,70 @@
+<div class="home-container">
+	<h6>
+		Welcome {{ user.userName }}!
+	</h6>
+	<div class="card border-primary mb-3">
+		<div class="card-body">
+			<h4 class="card-title">Add Photo</h4>
+			<div class="form-group has-success">
+			  	<label class="form-control-label" for="image-link">
+			  		Enter Image Link
+			  	</label>
+			  	<input 
+			  			type="text"  
+			  			class="form-control" 
+			  			id="image-link"
+			  			ng-model="user.img.link"
+	  			/>
+			</div>
+			<div class="form-group has-success">
+			  	<label class="form-control-label" for="image-caption">
+			  		Enter Image Caption
+			  	</label>
+			  	<input 
+			  			type="text"  
+			  			class="form-control" 
+			  			id="image-caption"
+			  			ng-model="user.img.caption"
+	  			/>
+			</div>
+			<div class="form-group has-success">
+			  	<label class="form-control-label" for="image-source">
+			  		Select Source
+			  	</label>
+				<select 
+						class="form-control" 
+						id="image-source" 
+						ng-model="user.img.source">
+
+						<option>Instagram</option>
+						<option>Facebook</option>
+						<option>Other</option>
+				</select>
+			</div>
+			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+			<button class="btn btn-block btn-primary" ng-click="addPhoto()">
+				Add
+			</button>		
+		</div>
+	</div>
+	<div class="user-images-container">
+		<div class="user-heading">
+			<h2>
+				Your Gallery
+			</h2>
+		</div>
+		<div class="row">
+			<div 
+					ng-repeat="media in user.list | orderBy: '-'"
+					class="col-md-3 col-sm-4 col-xs-6 well user-images-list"
+					title="{{ media.caption }}"
+					ng-style="{
+						'height': '120px',
+						'background-repeat': 'round',
+						'background-image': 'url({{ media.img }})'
+					}">
+			</div>
+	    </div>
+	</div>
+</div>

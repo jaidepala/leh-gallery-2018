@@ -4,18 +4,34 @@
 // License text available at https://opensource.org/licenses/MIT
 
 angular
-  .module('app', [
-    'lbServices',
-    'ui.router'
-  ])
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
-      $urlRouterProvider) {
-    $stateProvider
-      .state('todo', {
-        url: '',
-        templateUrl: 'views/todo.html',
-        controller: 'TodoController'
-      });
+    .module('app', [
+        'lbServices',
+        'ui.router',
+        'ngCookies'
+    ])
+    .config(['$stateProvider', '$urlRouterProvider', 
+    function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('todo', {
+                url: '',
+                templateUrl: 'views/todo.html',
+                controller: 'TodoController'
+            })
+            .state('home', {
+                url: '/home/:user',
+                templateUrl: 'views/home.html',
+                controller: 'HomeController'
+            })
+            .state('signup', {
+                url: '/signup',
+                templateUrl: 'views/signup.html',
+                controller: 'SignUpController'
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'views/login.html',
+                controller: 'LoginController'
+            });
 
-    $urlRouterProvider.otherwise('todo');
-  }]);
+        $urlRouterProvider.otherwise('login');
+    }]);

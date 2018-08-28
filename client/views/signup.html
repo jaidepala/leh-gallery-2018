@@ -1,0 +1,51 @@
+<div class="signup-container">
+	<h1>Sign-Up Users</h1>
+	<hr>
+	<form name="addUserForm" novalidate ng-submit="addUser()">
+
+		<div class="form-group">
+	  		<label for="user-email">Email</label>
+			<input
+				type="text"
+				id="user-email"
+				class="form-control"
+				autocomplete="off"
+				placeholder="Enter username"
+				ng-model="user.userName"
+			/>
+		  
+		  	<small id="emailHelp" class="form-text text-muted">
+		  		We'll never share your details with anyone else.
+		  	</small>
+		</div>
+		<div class="form-group">
+			<label for="user-password">Password</label>
+			<input
+				type="password"
+				id="user-password"
+				class="form-control"
+				autocomplete="off"
+				placeholder="Enter password"
+				ng-model="user.password"
+			/>
+		</div>
+
+		<hr>
+		
+		<button class="btn btn-default" ng-disabled="addUserForm.$invalid">
+			Add
+		</button>
+		
+		<hr>
+
+		<div class="text-center">
+			<h3>
+				Already have an account? <br>
+				<a class="btn btn-primary" href="#!/login">
+					Login
+				</a>
+			</h3>
+		</div>
+
+	</form>
+</div>

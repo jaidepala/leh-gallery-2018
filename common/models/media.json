@@ -1,0 +1,36 @@
+{
+  "name": "Media",
+  "plural": "Medias",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "source": {
+      "type": "string"
+    },
+    "img": {
+      "type": "string",
+      "required": true
+    },
+    "contains": {
+      "type": [
+        "string"
+      ]
+    },
+    "caption": {
+      "type": "string"
+    },
+    "clickedBy": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

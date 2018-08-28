@@ -1,33 +1,41 @@
 {
-  "name": "loopback-example-angular",
-  "version": "1.0.0",
-  "description": "loopback-example-angular",
-  "main": "server/server.js",
-  "scripts": {
-    "pretest": "jshint .",
-    "postinstall": "bower install",
-    "start": "node .",
-    "test": "tape tests/**/*.js"
-  },
-  "dependencies": {
-    "compression": "^1.0.3",
-    "cors": "^2.8.1",
-    "strong-error-handler": "^1.1.1",
-    "loopback": "^3.0.0",
-    "loopback-boot": "^2.6.5",
-    "serve-favicon": "^2.0.1"
-  },
-  "optionalDependencies": {
-    "loopback-component-explorer": "^2.1.0"
-  },
-  "devDependencies": {
-    "bower": "^1.5.2",
-    "jshint": "^2.5.6",
-    "tape": "^4.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/strongloop/loopback-example-angular"
-  },
-  "license": "MIT"
+    "name": "loopback-example-angular",
+    "version": "1.0.0",
+    "description": "loopback-example-angular",
+    "main": "server/server.js",
+    "engines": {
+        "node": "8.11.3",
+        "npm": "5.6.0"
+    },
+    "scripts": {
+        "pretest": "jshint .",
+        "heroku-prebuild": "echo Prebuild started...",
+        "heroku-postbuild": "echo Postbuild started...",
+        "postinstall": "bower install",
+        "start": "node .",
+        "test": "tape tests/**/*.js"
+    },
+    "dependencies": {
+        "angular-super-gallery": "^1.4.5",
+        "compression": "^1.0.3",
+        "cors": "^2.8.1",
+        "express": "4.16.3",
+        "loopback": "^3.0.0",
+        "loopback-boot": "^2.6.5",
+        "serve-favicon": "^2.0.1",
+        "strong-error-handler": "^1.1.1"
+    },
+    "optionalDependencies": {
+        "loopback-component-explorer": "^2.1.0"
+    },
+    "devDependencies": {
+        "bower": "^1.5.2",
+        "jshint": "^2.5.6",
+        "tape": "^4.2.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/strongloop/loopback-example-angular"
+    },
+    "license": "MIT"
 }

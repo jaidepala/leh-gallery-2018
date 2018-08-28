@@ -29,5 +29,9 @@
   "Todo": {
     "dataSource": "db",
     "public": true
+  },
+  "Media": {
+    "dataSource": "db",
+    "public": true
   }
 }
