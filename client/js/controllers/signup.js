@@ -8,11 +8,11 @@ angular
 	.controller('SignUpController', ['$scope', '$state', 'User', '$location', '$cookies',
 	function($scope, $state, User, $location, $cookies) {
 
-		var email = $cookies.get('user');
+		var email = $cookies.user;
 
 		if( email && email != null )
 		{
-			var id = $cookies.get('id');
+			var id = $cookies.id;
 
         	var emailUrl = email + ' ' + id;
 
@@ -35,7 +35,7 @@ angular
 	        .$promise
 	        .then(function( res ) {
 
-	        	$cookies.put('user', res.email);
+	        	$cookies.user = res.email;
 
 	        	$location.path('/login');
 	        })
@@ -48,12 +48,17 @@ angular
 	.controller('HomeController', ['$scope', '$state', 'User', 'Media', '$location', '$cookies',
 	function($scope, $state, User, Media, $location, $cookies) {
 		
-		var email = $cookies.get('user');
+		var email = $cookies.user;
 
 		if( !email || email == null )
 		{
-        	$location.path('/login');
-			return false;
+			var id = $cookies.id;
+
+			if( !id || id == null )
+			{
+				$location.path('/login');
+				return false;
+			}
 		}
 
 		$scope.user = {
@@ -72,35 +77,45 @@ angular
 		User
 		.findById(
 		{
-			id: $cookies.get('id')
+			id: $cookies.id
 		})
 		.$promise
 		.then(function(results) {
 			$scope.user.details = results;
+
+			$scope.getPhoto();
 		})
 		.catch(function( err ) {
 
-			$cookies.remove('user');
-			$cookies.remove('id');
-			$cookies.remove('token');
+			delete $cookies.user;
+			delete $cookies.id;
+			delete $cookies.token;
 			
         	$location.path('/login');
 			console.log(err);
 		});
+
+		$scope.redirectToSignup = function() {
+
+			delete $cookies.user;
+			delete $cookies.id;
+			delete $cookies.token;
+			
+        	$location.path('/login');
+		};
 
 		$scope.addPhoto = function() {
 			
 			Media
 			.create({
 				img: $scope.user.img.link,	
-				clickedBy: $cookies.get('id'),
+				clickedBy: $cookies.id,
 				caption: $scope.user.img.caption,
 				source: $scope.user.img.source
 			})
 			.$promise
 			.then(function() {
-				console.log('created successfully...');
-
+				
 				$scope.user.img.link = '';
 				$scope.user.img.caption = '';
 				$scope.user.img.source = '';
@@ -118,32 +133,27 @@ angular
 			
 			Media
 			.find({
-				clickedBy: $cookies.get('id')
+				clickedBy: $cookies.id
 			})
 			.$promise
 			.then(function( mediaRes ) {
 					
 				$scope.user.list = mediaRes;
-
-				console.log(mediaRes);
 			})
 			.catch(function( mediaErr ) {
 						
 			});
-
 		};
-
-		$scope.getPhoto();
 
 	}])
 	.controller('LoginController', ['$scope', '$state', 'User', 'Media', '$location', '$cookies',
 	function($scope, $state, User, Media, $location, $cookies) {
 		
-		var email = $cookies.get('user');
+		var email = $cookies.user;
 
 		if( email && email != null )
 		{
-			var id = $cookies.get('id');
+			var id = $cookies.id;
 
 			if( id && id != null )
 			{
@@ -171,24 +181,22 @@ angular
 				.$promise
 				.then(function( loginRes ) {
 
-		        	$cookies.put('id', loginRes.userId);
-		        	$cookies.put('user', loginRes.user.email);
-		        	$cookies.put('token', loginRes.id);
+		        	$cookies.id = loginRes.userId;
+		        	$cookies.user = loginRes.user.email;
+		        	$cookies.token = loginRes.id;
 
 		        	var emailUrl = loginRes.user.email + ' ' + loginRes.userId;
 							
 		        	$scope.user.userName = '';
 		        	$scope.user.password = '';
 
-		        	console.log(emailUrl);
-
 		        	$location.path('/home/' + emailUrl.replace(/\s+/g, '-').toLowerCase());
 				})
 				.catch(function( loginErr ) {
 
-					$cookies.remove('user');
-					$cookies.remove('id');
-					$cookies.remove('token');
+					delete $cookies.user;
+					delete $cookies.id;
+					delete $cookies.token;
 					
 					console.log( loginErr );		
 				});

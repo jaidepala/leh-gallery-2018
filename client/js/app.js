@@ -12,11 +12,11 @@ angular
     .config(['$stateProvider', '$urlRouterProvider', 
     function($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('todo', {
-                url: '',
-                templateUrl: 'views/todo.html',
-                controller: 'TodoController'
-            })
+            // .state('todo', {
+            //     url: '',
+            //     templateUrl: 'views/todo.html',
+            //     controller: 'TodoController'
+            // })
             .state('home', {
                 url: '/home/:user',
                 templateUrl: 'views/home.html',
@@ -33,5 +33,5 @@ angular
                 controller: 'LoginController'
             });
 
-        $urlRouterProvider.otherwise('login');
+        $urlRouterProvider.otherwise('home');
     }]);

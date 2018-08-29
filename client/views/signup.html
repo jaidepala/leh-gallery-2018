@@ -1,5 +1,5 @@
 <div class="main-container signup-container">
-	<h1>Sign-Up Users</h1>
+	<h2>Sign-Up Users</h2>
 	<hr>
 	<form name="addUserForm" novalidate ng-submit="addUser()">
 
@@ -32,20 +32,22 @@
 
 		<hr>
 		
-		<button class="btn btn-default" ng-disabled="addUserForm.$invalid">
-			Add
+		<button class="btn btn-info btn-block" ng-disabled="addUserForm.$invalid">
+			Sign Up!
 		</button>
 		
 		<hr>
 
 		<div class="text-center">
 			<h3>
-				Already have an account? <br>
-				<a class="btn btn-primary" href="#!/login">
+				Have an account? <br>
+				<a class="btn btn-primary" ui-sref="login">
 					Login
 				</a>
 			</h3>
 		</div>
+
+		<hr>
 
 	</form>
 </div>

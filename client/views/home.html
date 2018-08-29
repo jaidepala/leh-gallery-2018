@@ -1,7 +1,13 @@
 <div class="main-container home-container">
 	<h6>
 		Welcome {{ user.userName }}!
+		<div class="pull-right">
+			<a class="btn btn-primary" ng-click="redirectToSignup()">
+				Logout
+			</a>
+		</div>
 	</h6>
+
 	<div class="card border-primary mb-3">
 		<div class="card-body">
 			<h4 class="card-title">Add Photo</h4>
