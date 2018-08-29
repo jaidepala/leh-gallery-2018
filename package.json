@@ -16,7 +16,6 @@
         "test": "tape tests/**/*.js"
     },
     "dependencies": {
-        "angular-super-gallery": "^1.4.5",
         "compression": "^1.0.3",
         "cors": "^2.8.1",
         "express": "4.16.3",

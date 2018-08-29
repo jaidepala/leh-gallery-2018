@@ -1,7 +1,7 @@
 {
 	"name": "loopback-example-angular",
 	"license": "MIT",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"homepage": "https://github.com/strongloop/loopback-example-angular",
 	"ignore": [
 		"**/.*",
@@ -20,6 +20,6 @@
 		"angular-resource": "~1.3.15",
 		"angular-ui-router": "0.3.2",
 		"bootstrap": "~3.3.4",
-		"angular-cookies": "^1.7.3"
+		"angular-cookies": "~1.5.9"
 	}
 }
