@@ -1,0 +1,73 @@
+<div class="main-container home-container">
+	<h6>
+		Welcome {{ user.userName }}!
+		<div class="pull-right">
+			<a class="btn btn-primary" ng-click="redirectToSignup()">
+				Logout
+			</a>
+		</div>
+	</h6>
+
+	<hr>
+
+	<div class="card border-primary mb-3">
+		<div class="card-body">
+
+			<a 
+				class="btn btn-primary pull-left"
+				ui-sref="home({
+					user: user.urlId
+				})">
+
+				<i class="glyphicon glyphicon-arrow-left"></i>
+			</a>
+
+			<h4 class="card-title">
+				&nbsp;&nbsp;&nbsp;Add Photo
+			</h4>
+
+			<hr>
+			<div class="form-group has-success">
+			  	<label class="form-control-label" for="image-link">
+			  		Enter Image Link
+			  	</label>
+			  	<input 
+			  			type="text"  
+			  			class="form-control" 
+			  			id="image-link"
+			  			ng-model="user.img.link"
+	  			/>
+			</div>
+			<div class="form-group has-success">
+			  	<label class="form-control-label" for="image-caption">
+			  		Enter Image Caption
+			  	</label>
+			  	<input 
+			  			type="text"  
+			  			class="form-control" 
+			  			id="image-caption"
+			  			ng-model="user.img.caption"
+	  			/>
+			</div>
+			<div class="form-group has-success">
+			  	<label class="form-control-label" for="image-source">
+			  		Select Source
+			  	</label>
+				<select 
+						class="form-control" 
+						id="image-source" 
+						ng-model="user.img.source">
+
+						<option>Instagram</option>
+						<option>Facebook</option>
+						<option>Other</option>
+				</select>
+			</div>
+			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+			<button class="btn btn-block btn-primary" ng-click="addPhoto()">
+				Add
+			</button>		
+		</div>
+	</div>
+</div>

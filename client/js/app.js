@@ -22,6 +22,16 @@ angular
                 templateUrl: 'views/home.html',
                 controller: 'HomeController'
             })
+            .state('edit', {
+                url: '/home/:user/media/:media',
+                templateUrl: 'views/edit.html',
+                controller: 'EditController'
+            })
+            .state('add', {
+                url: '/home/:user/add',
+                templateUrl: 'views/add.html',
+                controller: 'AddController'
+            })
             .state('signup', {
                 url: '/signup',
                 templateUrl: 'views/signup.html',
